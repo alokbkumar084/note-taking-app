@@ -2,7 +2,7 @@ import React from "react";
 
 const NoteItem = ({ note, onEdit, onDelete }) => {
   return (
-    <div className="p-4 border rounded-lg mb-4 shadow-lg flex justify-between items-center">
+    <div className="p-4 border dark:border-gray-600 rounded-lg mb-4 shadow-lg flex justify-between items-center">
       <div>
         <h3 className="text-lg font-semibold">{note.title}</h3>
         <p>{note.content}</p>

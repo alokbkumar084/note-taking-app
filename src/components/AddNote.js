@@ -1,24 +1,41 @@
-// components/AddNote.js
+import axios from "axios";
 import React, { useState } from "react";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
-const AddNote = ({ onAddNote }) => {
+const AddNote = ({ onAddNote, fetchData }) => {
   const [isAdding, setIsAdding] = useState(false);
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
 
-  // Toggle the form visibility
-  const handleAddClick = () => setIsAdding(!isAdding);
+  const handleAddClick = async () => {
+    setIsAdding(!isAdding);
+  };
 
-  // Handle form submission
-  const handleSave = () => {
+  const handleSave = async () => {
     if (title && content) {
-      // Call the onAddNote function passed from NoteList
-      onAddNote({
-        id: Date.now().toString(), // Generate a unique ID
-        title,
-        content,
-      });
-      // Reset the form fields and close the form
+      try {
+        const response = await axios.post(
+          "https://backend-ten-alpha-76.vercel.app/api/notes",
+          {
+            title: title,
+            content: content,
+          }
+        );
+
+        if (response.status == 200 || 201) {
+          toast.success("Note added successfully!");
+          setTitle("");
+          setContent("");
+          setIsAdding(!isAdding);
+          fetchData();
+          return;
+        }
+      } catch (error) {
+        console.log("error", error);
+        toast.error("Failed to add note. Please try again!");
+      }
+
       setTitle("");
       setContent("");
       setIsAdding(false);
@@ -27,7 +44,6 @@ const AddNote = ({ onAddNote }) => {
 
   return (
     <div className="mb-4 w-[75%]">
-      {/* Add Note Button */}
       <button
         onClick={handleAddClick}
         className="py-2 px-4 bg-green-500 text-white rounded-lg hover:bg-green-700 flex ml-auto"
@@ -35,7 +51,6 @@ const AddNote = ({ onAddNote }) => {
         {isAdding ? "Cancel" : "Add Note"}
       </button>
 
-      {/* Add Note Form (only visible when adding) */}
       {isAdding && (
         <div className="mt-4">
           <input

@@ -1,4 +1,4 @@
-// src/components/EmbedNote.js
+
 import React from "react";
 
 const EmbedNote = ({ note }) => {

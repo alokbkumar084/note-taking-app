@@ -1,4 +1,3 @@
-// src/components/Settings.js
 import React from "react";
 
 const Settings = ({ darkMode, setDarkMode }) => {
@@ -10,7 +9,7 @@ const Settings = ({ darkMode, setDarkMode }) => {
           type="checkbox"
           checked={darkMode}
           onChange={() => setDarkMode(!darkMode)}
-          className="toggle toggle-accent"
+          className="toggle toggle-accent cursor-pointer"
         />
       </div>
     </div>
