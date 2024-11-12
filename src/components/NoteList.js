@@ -25,7 +25,7 @@ const NoteList = () => {
   const fetchData = async () => {
     try {
       const response = await axios.get(
-        "https://backend-ten-alpha-76.vercel.app/api/notes"
+        "https://sdrieny6gr4oqvrfre3h4gqev40zogwx.lambda-url.us-east-1.on.aws/"
       );
       setNotes(response.data);
       setFilteredNotes(response.data);
@@ -74,7 +74,7 @@ const NoteList = () => {
 
     try {
       const response = await axios.put(
-        "https://backend-ten-alpha-76.vercel.app/api/notes",
+        "https://sdrieny6gr4oqvrfre3h4gqev40zogwx.lambda-url.us-east-1.on.aws/",
         { id: id, title: newTitle, content: newContent }
       );
 
@@ -99,7 +99,7 @@ const NoteList = () => {
   const deleteNote = async (id) => {
     try {
       await axios.delete(
-        `https://backend-ten-alpha-76.vercel.app/api/notes?id=${id}`
+        `https://sdrieny6gr4oqvrfre3h4gqev40zogwx.lambda-url.us-east-1.on.aws/?id=${id}`
       );
       const updatedNotes = notes.filter((note) => note.id !== id);
       setNotes(updatedNotes);
@@ -126,6 +126,7 @@ const NoteList = () => {
           <img
             src={SearchIcon}
             alt="Search Icon"
+            e
             className=" absolute w-5 h-5 right-4 top-2"
           />
         </div>
@@ -179,4 +180,3 @@ const NoteList = () => {
 };
 
 export default NoteList;
-

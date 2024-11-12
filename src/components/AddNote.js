@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import Modal from "react-modal";
 import axios from "axios";
@@ -26,7 +25,7 @@ const AddNote = ({ onAddNote, fetchData }) => {
     if (title && content) {
       try {
         const response = await axios.post(
-          "https://backend-ten-alpha-76.vercel.app/api/notes",
+          "https://sdrieny6gr4oqvrfre3h4gqev40zogwx.lambda-url.us-east-1.on.aws/  ",
           { title, content }
         );
 
@@ -71,7 +70,7 @@ const AddNote = ({ onAddNote, fetchData }) => {
             <textarea
               value={content}
               onChange={(e) => setContent(e.target.value)}
-              placeholder="Content"
+              placeholder="content"
               className="w-full p-2 mb-4 border rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white"
             />
             <div className="flex justify-end space-x-2">
